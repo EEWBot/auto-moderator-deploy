@@ -1,0 +1,28 @@
+services:
+  automoderator:
+    image: ghcr.io/eewbot/auto-moderator:v0.1.0
+    hostname: automoderator
+    container_name: automoderator__automoderator
+    restart: unless-stopped
+
+    environment:
+      LISTEN: 0.0.0.0:3000
+      DISCORD_TOKEN: ${DISCORD_TOKEN}
+
+    volumes:
+      - type: bind
+        source: ./auto-moderator.toml
+        target: /etc/auto-moderator.toml
+        read_only: true
+
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+    networks:
+      - default
+
+networks:
+  default:
+    name: automoderator__default
