@@ -1,6 +1,6 @@
 services:
   automoderator:
-    image: ghcr.io/eewbot/auto-moderator:v0.1.0
+    image: ghcr.io/eewbot/auto-moderator:v0.2.0
     hostname: automoderator
     container_name: automoderator__automoderator
     restart: unless-stopped
